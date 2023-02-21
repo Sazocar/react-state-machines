@@ -7,8 +7,8 @@ body {
 
 .button {
   border: none;
-  background-color: #4F54A7;
-  padding: 8px 16px;
+  background-color: #3e91ff;
+  padding: 12px 20px;
   border-radius: 8px;
   color: white;
   font-weight: bold;
@@ -17,22 +17,22 @@ body {
 }
 
 .button:hover {
-  background-color: #293684;
+  background-color: #347ad4;
 }
 
 .button-secondary {
   border: none;
   background-color: rgba(255,255,255,0.8);
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 8px;
-  color: #4F54A7;
+  color: #347ad4;
   font-weight: bold;
   cursor: pointer;
   transition: all ease 300ms;
 }
 
 .button-secondary:hover {
-  color: #293684;
+  color: #347ad4;
   background-color: white;
 }
 
