@@ -12,12 +12,12 @@ export const Search = ({ send, context }) => {
 
   return (
     <div className='Search'>
-      <p className='Search-title title'>Busca tu destino</p>
+      <p className='Search-title title'>Search your destiny</p>
       <select id="country" className='Search-select' value={flight} onChange={handleSelectChange}>
-        <option value="" disabled defaultValue>Escoge un país</option>
+        <option value="" disabled defaultValue>Pick a country</option>
         {options.map((option) => <option value={option} key={option}>{option}</option>)}
       </select>
-      <button disabled={flight === ''} className='Search-continue button'>Continuar</button>
+      <button disabled={flight === ''} className='Search-continue button'>Continue</button>
     </div>
   );
 }; 

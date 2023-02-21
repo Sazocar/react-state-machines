@@ -8,9 +8,15 @@ export const Welcome = ({ send }) => {
 
   return (
     <div className='Welcome'>
-      <p className='Welcome-title title'>¡Hoy es el día!</p>
-      <p className='Welcome-description description'>Compra tu vuelo y conoce un nuevo rincón del mundo, te va a sorprender las maravillas que hay para explorar</p>
-      <button onClick={startBooking} className='Welcome-cancel button'>Comenzar</button>
+      <p className='Welcome-title title'>Today is the day!</p>
+      <p className='Welcome-description description'>
+        Buy your flight and get to know a new corner of the world, you will be
+        surprised by the wonders that there are to explore
+      </p>
+      <button onClick={startBooking} className='Welcome-cancel button'>
+        Start
+      </button>
     </div>
-  );
+  )
+
 }; 
