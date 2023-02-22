@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import './Passengers.css';
+import React, { useState } from 'react'
+import './Passengers.css'
 
 export const Passengers = ({ state, send }) => {
-  const [value, changeValue] = useState('');
+  const [value, setValue] = useState('')
 
   const onChangeInput = (e) => {
-    changeValue(e.target.value);
+    setValue(e.target.value)
   }
 
   const submit = (e) => {
-    e.preventDefault();
-    changeValue('');
+    e.preventDefault()
+    send('ADD', { newPassenger: value })
+    setValue('')
   }
 
   const handleOnContinue = () => {
@@ -20,8 +21,15 @@ export const Passengers = ({ state, send }) => {
   return (
     <form onSubmit={submit} className='Passengers'>
       <p className='Passengers-title title'>
-        Add the people who are going to fly ✈️
+        Add the people who are going to fly ✈️🌏
       </p>
+
+      {state.context.passengers.map((passenger, index) => (
+        <p key={`${passenger}-${index}`} className='text'>
+          {passenger}
+        </p>
+      ))}
+
       <input
         id='name'
         name='name'
@@ -30,6 +38,7 @@ export const Passengers = ({ state, send }) => {
         required
         value={value}
         onChange={onChangeInput}
+        autoFocus
       />
       <div className='Passengers-buttons'>
         <button className='Passengers-add button-secondary' type='submit'>
@@ -45,6 +54,6 @@ export const Passengers = ({ state, send }) => {
       </div>
     </form>
   )
+}
 
 
-};

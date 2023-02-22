@@ -9,7 +9,7 @@ export const Search = ({ send, context }) => {
   };
 
   const handleOnContinue = () => {
-    send('CONTINUE')
+    send('CONTINUE', { selectedCountry: flight })
   }
 
   const options = ['Mexico', 'Venezuela', 'Colombia'];
@@ -41,6 +41,7 @@ export const Search = ({ send, context }) => {
       </button>
     </div>
   )
+
 
 
 

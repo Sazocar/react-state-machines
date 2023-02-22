@@ -11,9 +11,9 @@ export const StepsLayout = ({ state, send }) => {
       case 'initial':
         return <Welcome send={send} />
       case 'search':
-        return <Search send={send} />
+        return <Search state={state} send={send} />
       case 'passengers':
-        return <Passengers send={send} />
+        return <Passengers state={state} send={send} />
       case 'tickets':
         return <Tickets send={send} />
       default:
