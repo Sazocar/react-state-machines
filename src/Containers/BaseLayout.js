@@ -7,11 +7,12 @@ import './BaseLayout.css';
 
 export const BaseLayout = () => {
   const [state, send] = useMachine(bookingMachine);
+  console.log('Our machine', state.value)
 
   return (
     <div className='BaseLayout'>
-      <Nav />
-      <StepsLayout />
+      <Nav state={state} send={send} />
+      <StepsLayout state={state} send={send} />
     </div>
-  );
+  )
 }

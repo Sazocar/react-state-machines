@@ -13,6 +13,10 @@ export const Passengers = ({ state, send }) => {
     changeValue('');
   }
 
+  const handleOnContinue = () => {
+    send('DONE')
+  }
+
   return (
     <form onSubmit={submit} className='Passengers'>
       <p className='Passengers-title title'>
@@ -31,11 +35,16 @@ export const Passengers = ({ state, send }) => {
         <button className='Passengers-add button-secondary' type='submit'>
           Add Passenger
         </button>
-        <button className='Passenger-pay button' type='button'>
+        <button
+          onClick={handleOnContinue}
+          className='Passenger-pay button'
+          type='button'
+        >
           Check your ticket
         </button>
       </div>
     </form>
   )
+
 
 };

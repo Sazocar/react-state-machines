@@ -8,16 +8,41 @@ export const Search = ({ send, context }) => {
     setFlight(event.target.value);
   };
 
+  const handleOnContinue = () => {
+    send('CONTINUE')
+  }
+
   const options = ['Mexico', 'Venezuela', 'Colombia'];
 
   return (
     <div className='Search'>
       <p className='Search-title title'>Search your destiny</p>
-      <select id="country" className='Search-select' value={flight} onChange={handleSelectChange}>
-        <option value="" disabled defaultValue>Pick a country</option>
-        {options.map((option) => <option value={option} key={option}>{option}</option>)}
+      <select
+        id='country'
+        className='Search-select'
+        value={flight}
+        onChange={handleSelectChange}
+      >
+        <option value='' disabled defaultValue>
+          Pick a country
+        </option>
+        {options.map((option) => (
+          <option value={option} key={option}>
+            {option}
+          </option>
+        ))}
       </select>
-      <button disabled={flight === ''} className='Search-continue button'>Continue</button>
+      <button
+        disabled={flight === ''}
+        onClick={handleOnContinue}
+        className='Search-continue button'
+      >
+        Continue
+      </button>
     </div>
-  );
+  )
+
+
+
+
 }; 

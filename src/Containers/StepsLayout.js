@@ -7,7 +7,18 @@ import './StepsLayout.css';
 
 export const StepsLayout = ({ state, send }) => {
   const renderContent = () => {
-    return <Welcome />;
+    switch (state.value) {
+      case 'initial':
+        return <Welcome send={send} />
+      case 'search':
+        return <Search send={send} />
+      case 'passengers':
+        return <Passengers send={send} />
+      case 'tickets':
+        return <Tickets send={send} />
+      default:
+        return null
+    }
   };
 
   return (
