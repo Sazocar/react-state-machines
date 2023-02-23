@@ -27,3 +27,8 @@
 .Passengers-title {
   margin-bottom: 16px;
 }
+
+.Passenger-pay:disabled {
+  cursor: default;
+  background-color: #6894cc;
+}

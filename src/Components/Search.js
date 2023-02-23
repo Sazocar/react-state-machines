@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Search.css';
 
-export const Search = ({ send, context }) => {
+export const Search = ({ state, send  }) => {
   const [flight, setFlight] = useState('');
 
   const handleSelectChange = (event) => {
@@ -12,7 +12,12 @@ export const Search = ({ send, context }) => {
     send('CONTINUE', { selectedCountry: flight })
   }
 
-  const options = ['Mexico', 'Venezuela', 'Colombia'];
+  let options = state.context.countries;
+  options = options.sort((a,b) => {
+    if (a.name.common < b.name.common)
+      return -1
+    return 1
+  })
 
   return (
     <div className='Search'>
@@ -27,13 +32,13 @@ export const Search = ({ send, context }) => {
           Pick a country
         </option>
         {options.map((option) => (
-          <option value={option} key={option}>
-            {option}
+          <option value={option.name.common} key={option.name.common}>
+            {option.name.common}
           </option>
         ))}
       </select>
       <button
-        disabled={flight === ''}
+        disabled={!flight}
         onClick={handleOnContinue}
         className='Search-continue button'
       >
@@ -41,6 +46,10 @@ export const Search = ({ send, context }) => {
       </button>
     </div>
   )
+
+
+
+
 
 
 

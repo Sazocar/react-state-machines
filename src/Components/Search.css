@@ -20,3 +20,8 @@
   margin-left: auto;
 }
 
+.Search-continue:disabled {
+  cursor: default;
+  background-color: #6894cc;
+}
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Tickets.css';
 
-export const Tickets = ({ send, context }) => {
+export const Tickets = ({ state, send }) => {
   const handleOnFinish = () => {
     send('FINISH')
   };
@@ -12,10 +12,18 @@ export const Tickets = ({ send, context }) => {
       <div className='Tickets-ticket'>
         <div className='Tickets-country'>Venezuela</div>
         <div className='Tickets-passengers'>
+          {state.context.passengers.map((passenger) => (
+            <p key={passenger}>{passenger}</p>
+          ))}
           <span>✈</span>
         </div>
       </div>
-      <button onClick={handleOnFinish} className='Tickets-finalizar button'>Finish</button>
+      <button disabled={!state.context.passengers} onClick={handleOnFinish} className='Tickets-finalizar button'>
+        Finish
+      </button>
     </div>
-  );
+  )
+
+
+
 }; 
