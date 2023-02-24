@@ -67,7 +67,7 @@ const bookingMachine = createMachine(
           CANCEL: {
             target: 'initial',
             actions: assign((context, event) => {
-              context.passengers = new Array()
+              context.passengers = []
               context.selectedCountry = ''
             }),
           },
@@ -84,7 +84,7 @@ const bookingMachine = createMachine(
           FINISH: {
             target: 'initial',
             actions: assign((context, event) => {
-              context.passengers = new Array()
+              context.passengers = []
               context.selectedCountry = ''
             }),
           },
