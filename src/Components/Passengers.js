@@ -40,7 +40,7 @@ export const Passengers = ({ state, send }) => {
         id='name'
         name='name'
         type='text'
-        placeholder='Enter your full name'
+        placeholder={`Enter passenger's full name`}
         required
         value={value}
         onChange={onChangeInput}
@@ -63,6 +63,8 @@ export const Passengers = ({ state, send }) => {
     </form>
   )
 }
+
+
 
 
 
