@@ -39,7 +39,7 @@ export const Passengers = ({ state, send }) => {
         value={value}
         onChange={onChangeInput}
         autoFocus
-        pattern='^[a-zA-Z]+(?:\s[a-zA-Z]+)*$'
+        pattern='^[a-zA-Z\u00f1\u00d1]+(?:\s[a-zA-Z\u00f1\u00d1]+)*$'
       />
       <div className='Passengers-buttons'>
         <button className='Passengers-add button-secondary' type='submit'>
@@ -57,6 +57,8 @@ export const Passengers = ({ state, send }) => {
     </form>
   )
 }
+
+
 
 
 
