@@ -20,6 +20,12 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: all ease 300ms;
+
+  -webkit-tap-highlight-color: transparent;
+	-webkit-padding-after: 1px;
+	-webkit-padding-before: 1px;
+	-webkit-border-radius: 50%;
+	-webkit-text-size-adjust: auto;
 }
 
 .button:hover {
@@ -35,6 +41,12 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: all ease 300ms;
+
+  -webkit-tap-highlight-color: transparent;
+	-webkit-padding-after: 1px;
+	-webkit-padding-before: 1px;
+	-webkit-border-radius: 50%;
+	-webkit-text-size-adjust: auto;
 }
 
 .button-secondary:hover {

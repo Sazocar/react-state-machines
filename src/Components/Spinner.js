@@ -26,7 +26,4 @@ const Spinner = ({ send }) => {
   )
 }
 
-
-
-
 export { Spinner }
