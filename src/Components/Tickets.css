@@ -58,3 +58,17 @@
   color: #5796e9;
   transform: rotate(-45deg);
 }
+
+@media (max-width: 425px) {
+  .Tickets-passengers span {
+    top: -9px;
+    right: 2px;
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 320px) {
+  .Tickets-passengers span {
+    font-size: 39px;
+  }
+}
