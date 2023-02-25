@@ -1,16 +1,32 @@
-const Spinner = () => {
+import { useEffect } from "react"
+import './Spinner.css'
+
+const Spinner = ({ send }) => {
+
+  useEffect(() => {
+    setTimeout(() => {
+      send('DONE')
+    }, 1500);
+  }, [])
+
   return (
-    <div class='dot-spinner'>
-      <div class='dot-spinner__dot'></div>
-      <div class='dot-spinner__dot'></div>
-      <div class='dot-spinner__dot'></div>
-      <div class='dot-spinner__dot'></div>
-      <div class='dot-spinner__dot'></div>
-      <div class='dot-spinner__dot'></div>
-      <div class='dot-spinner__dot'></div>
-      <div class='dot-spinner__dot'></div>
-    </div>
+    <>
+      <div className='dot-spinner'>
+        <div className='dot-spinner__dot'></div>
+        <div className='dot-spinner__dot'></div>
+        <div className='dot-spinner__dot'></div>
+        <div className='dot-spinner__dot'></div>
+        <div className='dot-spinner__dot'></div>
+        <div className='dot-spinner__dot'></div>
+        <div className='dot-spinner__dot'></div>
+        <div className='dot-spinner__dot'></div>
+      </div>
+      <p>Loading</p>
+    </>
   )
 }
+
+
+
 
 export { Spinner }

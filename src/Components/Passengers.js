@@ -58,16 +58,3 @@ export const Passengers = ({ state, send }) => {
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
