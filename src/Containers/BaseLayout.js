@@ -8,7 +8,6 @@ import './BaseLayout.css'
 
 export const BaseLayout = () => {
   const [state, send] = useMachine(bookingMachine)
-  console.log('Our machine', state.value, state.context)
 
   const renderContent = () => {
     if (state.matches('loading'))
