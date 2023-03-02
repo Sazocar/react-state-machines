@@ -17,7 +17,7 @@ const fillCountries = {
         onError: {
           target: 'failure',
           actions: assign({
-            error: 'Fallo el request',
+            error: 'Request failed',
           }),
         },
       },
@@ -31,80 +31,66 @@ const fillCountries = {
   },
 }
 
-const bookingMachine = createMachine(
-  {
-    id: 'buy plane tickets',
-    initial: 'initial',
-    context: {
-      passengers: [],
-      selectedCountry: '',
-      countries: [],
-      error: '',
+const bookingMachine = createMachine({
+  id: 'Buy plane tickets',
+  initial: 'initial',
+  context: {
+    passengers: [],
+    selectedCountry: '',
+    countries: [],
+    error: '',
+  },
+  states: {
+    initial: {
+      on: {
+        START: {
+          target: 'search',
+        },
+      },
     },
-    states: {
-      initial: {
-        on: {
-          START: {
-            target: 'search',
-          },
+    search: {
+      on: {
+        CONTINUE: {
+          target: 'passengers',
+          actions: assign({
+            selectedCountry: (context, event) => event.selectedCountry,
+          }),
+        },
+        CANCEL: 'initial',
+      },
+      ...fillCountries,
+    },
+    passengers: {
+      on: {
+        DONE: 'tickets',
+        CANCEL: {
+          target: 'initial',
+          actions: assign((context, event) => {
+            context.passengers = []
+            context.selectedCountry = ''
+          }),
+        },
+        ADD: {
+          target: 'passengers',
+          actions: assign((context, event) =>
+            context.passengers.push(event.newPassenger)
+          ),
         },
       },
-      search: {
-        on: {
-          CONTINUE: {
-            target: 'passengers',
-            actions: assign({
-              selectedCountry: (context, event) => event.selectedCountry,
-            }),
-          },
-          CANCEL: 'initial',
+    },
+    tickets: {
+      on: {
+        FINISH: {
+          target: 'initial',
+          actions: assign((context, event) => {
+            context.passengers = []
+            context.selectedCountry = ''
+          }),
         },
-        ...fillCountries,
-      },
-      tickets: {
-        after: {
-          5000: {
-            target: 'initial',
-            actions: 'cleanContext',
-          },
-        },
-        on: {
-          FINISH: 'initial',
-        },
-      },
-      passengers: {
-        on: {
-          DONE: {
-            target: 'tickets',
-            cond: 'moreThanOnePassenger',
-          },
-          CANCEL: {
-            target: 'initial',
-            actions: 'cleanContext',
-          },
-          ADD: {
-            target: 'passengers',
-            actions: assign((context, event) =>
-              context.passengers.push(event.newPassenger)
-            ),
-          },
-        },
+        CANCEL: 'initial',
       },
     },
   },
-  {
-    actions: {
-      cleanContext: assign({
-        selectedCountry: '',
-        passengers: [],
-      }),
-    },
-    guards: {
-      moreThanOnePassenger: (context) => {
-        return context.passengers.length > 0
-      },
-    },
-  }
-)
+})
 
 export default bookingMachine
