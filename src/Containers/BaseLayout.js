@@ -16,13 +16,6 @@ export const BaseLayout = () => {
           <Spinner send={send} />
         </div>
       )
-    if (state.matches('initial'))
-      return (
-        <div className='BaseLayout'>
-          <Nav state={state} send={send} />
-          <StepsLayout state={state} send={send} />
-        </div>
-      )
     else
       return (
         <div className='BaseLayout'>

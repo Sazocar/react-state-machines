@@ -60,18 +60,10 @@
 }
 
 @media (max-width: 435px) {
-  .Tickets-ticket {
-    grid-template-columns: auto;
-  }
-
-  .Tickets-country {
-    border-bottom: 1px dashed #3e91ff;
-    border-right: none;
-  }
-  
-  .Tickets-passengers {
-    border-top: 1px dashed #3e91ff;
-    border-left: none;
+  .Tickets-passengers span {
+    top: -9px;
+    right: 2px;
+    font-size: 50px;
   }
 }
 
@@ -83,7 +75,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 390px) {
   .Tickets-passengers span {
     font-size: 39px;
   }
