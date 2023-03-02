@@ -34,7 +34,7 @@ const fillCountries = {
 const bookingMachine = createMachine(
   {
     id: 'Buy plane tickets',
-    initial: 'loading',
+    initial: 'initial',
     context: {
       passengers: [],
       selectedCountry: '',
@@ -42,13 +42,6 @@ const bookingMachine = createMachine(
       error: '',
     },
     states: {
-      loading: {
-        on: {
-          DONE: {
-            target: 'initial',
-          }
-        }
-      },
       initial: {
         on: {
           START: {
