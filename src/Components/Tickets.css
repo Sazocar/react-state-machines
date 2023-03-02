@@ -59,6 +59,22 @@
   transform: rotate(-45deg);
 }
 
+@media (max-width: 435px) {
+  .Tickets-ticket {
+    grid-template-columns: auto;
+  }
+
+  .Tickets-country {
+    border-bottom: 1px dashed #3e91ff;
+    border-right: none;
+  }
+  
+  .Tickets-passengers {
+    border-top: 1px dashed #3e91ff;
+    border-left: none;
+  }
+}
+
 @media (max-width: 425px) {
   .Tickets-passengers span {
     top: -9px;
@@ -72,3 +88,4 @@
     font-size: 39px;
   }
 }
+
