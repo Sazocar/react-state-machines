@@ -1,5 +1,5 @@
-import { createMachine, assign } from "xstate";
-import { fetchCountries } from "../Utils/api";
+import { createMachine, assign } from 'xstate'
+import { fetchCountries } from '../Utils/api'
 
 const fillCountries = {
   initial: 'loading',
@@ -17,7 +17,7 @@ const fillCountries = {
         onError: {
           target: 'failure',
           actions: assign({
-            error: 'Request failed',
+            error: 'Fallo el request',
           }),
         },
       },
@@ -33,7 +33,7 @@ const fillCountries = {
 
 const bookingMachine = createMachine(
   {
-    id: 'Buy plane tickets',
+    id: 'buy plane tickets',
     initial: 'initial',
     context: {
       passengers: [],
@@ -61,15 +61,26 @@ const bookingMachine = createMachine(
         },
         ...fillCountries,
       },
+      tickets: {
+        after: {
+          5000: {
+            target: 'initial',
+            actions: 'cleanContext',
+          },
+        },
+        on: {
+          FINISH: 'initial',
+        },
+      },
       passengers: {
         on: {
-          DONE: 'tickets',
+          DONE: {
+            target: 'tickets',
+            cond: 'moreThanOnePassenger',
+          },
           CANCEL: {
             target: 'initial',
-            actions: assign((context, event) => {
-              context.passengers = []
-              context.selectedCountry = ''
-            }),
+            actions: 'cleanContext',
           },
           ADD: {
             target: 'passengers',
@@ -79,20 +90,21 @@ const bookingMachine = createMachine(
           },
         },
       },
-      tickets: {
-        on: {
-          FINISH: {
-            target: 'initial',
-            actions: assign((context, event) => {
-              context.passengers = []
-              context.selectedCountry = ''
-            }),
-          },
-          CANCEL: 'initial',
-        },
-      },
     },
   },
+  {
+    actions: {
+      cleanContext: assign({
+        selectedCountry: '',
+        passengers: [],
+      }),
+    },
+    guards: {
+      moreThanOnePassenger: (context) => {
+        return context.passengers.length > 0
+      },
+    },
+  }
 )
 
-export default bookingMachine;
+export default bookingMachine
