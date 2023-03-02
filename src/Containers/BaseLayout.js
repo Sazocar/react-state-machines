@@ -12,7 +12,7 @@ export const BaseLayout = () => {
   const renderContent = () => {
     if (state.matches('loading'))
       return (
-        <div className='Layout'>
+        <div className='BaseLayout'>
           <Spinner send={send} />
         </div>
       )
@@ -34,3 +34,4 @@ export const BaseLayout = () => {
 
   return <>{renderContent()}</>
 }
+
